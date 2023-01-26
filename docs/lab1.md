@@ -2,9 +2,9 @@
 
 words
 
-![Example1](./resources/lab1/Example1.mov)
-![Example1](./resources/lab1/Example2.mp4)
-![Example1](./resources/lab1/Example3.mp4)
-![Example1](./resources/lab1/Example4.mp4)
+![Example1](https://youtube.com/shorts/BLUckYMHRmA)
+![Example2](https://youtu.be/bOGpbKbLozU)
+![Example3](https://youtu.be/W3j5OXLEYZQ)
+![Example4](https://youtu.be/MQVtcWXXAas)
 
 ***
