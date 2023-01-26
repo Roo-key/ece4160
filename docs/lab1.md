@@ -5,6 +5,7 @@
 The objective of Lab 1 was to setup the Arduino IDE and Artemis board. The lab involved various installations for compatability between the Arduino IDE and Artemis board, as well as exercises to help familiarize with the functions of the Arduino IDE. Since the Artemis board will be used as the microcontroller for future lab projects, it was imperative to learn more about its various functions and features.
 
 ## LED Blink:
+[![Example 1: LED Blink](https://img.youtube.com/vi/BLUckYMHRmA/0.jpg)](https://youtube.com/shorts/BLUckYMHRmA)
 [Example 1: LED Blink](https://youtube.com/shorts/BLUckYMHRmA)
 The first example using the Artemis board involved programming the board with pre-written code through the Arduino IDE. The default Blink program involves flashing an LED on the Artemis board on and off every few seconds. The physical example of this can be seen in the linked video.
 
