@@ -2,7 +2,7 @@
 layout: post
 title: Lab 1
 description: Artemis
-image: https://img.youtube.com/vi/BLUckYMHRmA/0.jpg
+image: assets/images/lab1.jpg
 nav-menu: true
 ---
 
