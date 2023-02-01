@@ -12,15 +12,7 @@ The first example using the Artemis board involved programming the board with pr
 ### Example 2 - Serial:
 [![Example 2 - Serial](https://img.youtube.com/vi/bOGpbKbLozU/0.jpg)](https://youtu.be/bOGpbKbLozU)
 
-<iframe 
-        width="560" 
-        height="315" 
-        src="https://www.youtube.com/embed/bOGpbKbLozU" 
-        title="YouTube video player" 
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        allowfullscreen>
-</iframe>
+{% include youtube.html id="JLMbpiywVxQ" %}
 
 Another important function of the Artemis board is its ability to recieve serial inputs. For this example, the Arduino IDE was used to pass text inputs into the Artemis board. The microcontroller on the board receives these inputs through serial, which can then be read via the serial viewer within the Arduino IDE. The baud rate had to be increased from the default value of 9600 to 115200 in order for the characters to be readable.
 
