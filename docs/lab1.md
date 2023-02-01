@@ -1,5 +1,10 @@
-## Lab 1: Artemis
-[Return to main page](index.md)
+---
+layout: post
+title: Lab 1
+description: Artemis
+image: https://img.youtube.com/vi/BLUckYMHRmA/0.jpg
+nav-menu: true
+---
 
 ### Objective
 The objective of Lab 1 was to setup the Arduino IDE and Artemis board. The lab involved various installations for compatability between the Arduino IDE and Artemis board, as well as exercises to help familiarize with the functions of the Arduino IDE. Since the Artemis board will be used as the microcontroller for future lab projects, it was imperative to learn more about its various functions and features.
