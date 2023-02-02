@@ -14,14 +14,8 @@ nav-menu: true
 <h2>Setup</h2>
     <p>The materials required to complete the lab include:
     <ul>
-        <li>Arduino IDE</li>
-            <ul>
-                <li> I downloaded the latest version of the Arduino IDE, verison 2.0.3, from the <a href="https://www.arduino.cc/en/software">official website</a></li>
-            </ul>
-        <li>SparkFun RedBoard Artemis Nano</li>
-            <ul>
-                <li>Details of which can be found <a href="https://www.arduino.cc/en/software">here</a></li>
-            </ul>
+        <li>Arduino IDE - I downloaded the latest version of the Arduino IDE, verison 2.0.3, from the <a href="https://www.arduino.cc/en/software">official website</a></li>
+        <li>SparkFun RedBoard Artemis Nano - details of which can be found <a href="https://www.arduino.cc/en/software">here</a></li>
         <li>USB-C to USB-A Cable</li>
     </ul>
     </p>
