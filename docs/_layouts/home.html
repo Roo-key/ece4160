@@ -28,15 +28,26 @@ padding-left: 0;
 }
 }
 
-@include breakpoint(xsmall) {
-.copyright {
-li {
-display: block;
-border-left: 0;
-margin-left: 0;
-padding-left: 0;
-line-height: inherit;
-}
-}
-}
-}
+<!-- Main -->
+<div id="main">
+
+    <!-- One -->
+    {% include tiles.html %}
+
+    <!-- Two -->
+    <section id="two">
+        <div class="inner">
+            <header class="major">
+                <h2>About Me</h2>
+            </header>
+            <p>{{ content }}</p>
+        </div>
+    </section>
+
+</div>
+
+{% include footer.html %}
+
+</body>
+
+</html>
