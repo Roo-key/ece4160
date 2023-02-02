@@ -9,10 +9,10 @@ nav-menu: true
 
 <h2>Objective</h2>
 
-</p>The objective of Lab 1 was to familiarize students with using the Arduino IDE with the Artemis board. The lab involved a number of installations for compatability between the Arduino IDE and Artemis board, as well as exercises to help better understand the functions of the Arduino IDE. Some of these functions include the Artemis board LEDs, serial read and write, and different types of sensors. Since the Artemis board will be used as the microcontroller for future lab projects, it was imperative to learn more about its various functions and features.</p>
+<p>The objective of Lab 1 was to familiarize students with using the Arduino IDE with the Artemis board. The lab involved a number of installations for compatability between the Arduino IDE and Artemis board, as well as exercises to help better understand the functions of the Arduino IDE. Some of these functions include the Artemis board LEDs, serial read and write, and different types of sensors. Since the Artemis board will be used as the microcontroller for future lab projects, it was imperative to learn more about its various functions and features.</p>
 
 <h2>Setup</h2>
-    <p>The materials required to complete the lab include:</p>
+    <p>The materials required to complete the lab include:
     <ul>
         <li>Arduino IDE</li>
             <ul>
@@ -24,6 +24,7 @@ nav-menu: true
             </ul>
         <li>USB-C to USB-A Cable</li>
     </ul>
+    </p>
 
 <h2>Example 1 - LED Blink:</h2>
 
