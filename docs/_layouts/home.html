@@ -1,54 +1,42 @@
-<!DOCTYPE html>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+///
+/// Forty by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
 
-{% include head.html %}
+/* Footer */
 
-<body>
+#footer {
+.copyright {
+font-size: 0.8em;
+list-style: none;
+padding-left: 0;
 
-    {% include header.html %}
+li {
+border-left: solid 1px _palette(border);
+color: _palette(fg-light);
+display: inline-block;
+line-height: 1;
+margin-left: 1em;
+padding-left: 1em;
 
-    <!-- Banner -->
-    <section id="banner" class="major">
-        <div class="inner">
-            <header class="major">
-                <h1>{{ page.landing-title }}</h1>
-            </header>
-            <div class="content">
-                <p style="text-transform: uppercase;">{{ site.description }}</p>
-                <ul class="actions">
-                    <li><a href="#one" class="button next scrolly">Get Started</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
+&:first-child {
+border-left: 0;
+margin-left: 0;
+padding-left: 0;
+}
+}
+}
 
-    <!-- Main -->
-    <div id="main">
-
-        <!-- One -->
-        {% include tiles.html %}
-
-        <!-- Two -->
-        <section id="two">
-            <div class="inner">
-                <header class="major">
-                    <h2>About Me</h2>
-                </header>
-                <p>{{ content }}</p>
-                <ul class="actions">
-                </ul>
-            </div>
-        </section>
-
-    </div>
-
-    {% include footer.html %}
-
-</body>
-
-</html>
+@include breakpoint(xsmall) {
+.copyright {
+li {
+display: block;
+border-left: 0;
+margin-left: 0;
+padding-left: 0;
+line-height: inherit;
+}
+}
+}
+}
