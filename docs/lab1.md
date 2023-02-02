@@ -6,17 +6,16 @@ image: assets/images/lab1.jpg
 nav-menu: true
 ---
 
-<h2>Objective </h2>
+##Objective
 The objective of Lab 1 was to familiarize students with using the Arduino IDE with the Artemis board. The lab involved a number of installations for compatability between the Arduino IDE and Artemis board, as well as exercises to help better understand the functions of the Arduino IDE. Some of these functions include the Artemis board LEDs, serial read and write, and different types of sensors. Since the Artemis board will be used as the microcontroller for future lab projects, it was imperative to learn more about its various functions and features.
 
-<h2>Setup</h2>
+##Setup
 The materials required to complete the lab include:
-<ul>
-	<li>Arduino IDE</li>
-	<li>Artemis Nano Board</li>
-	<li>USB-C to USB-A Cable</li>
-</ul>
-<h2>Example 1 - LED Blink:</h2>
+-Arduino IDE
+-Artemis Nano Board
+-USB-C to USB-A Cable
+
+##Example 1 - LED Blink:
 
 <iframe 
     width="320" 
@@ -30,7 +29,7 @@ The materials required to complete the lab include:
 
 The first example using the Artemis board involved programming the board with pre-written code through the Arduino IDE. The default Blink program involves flashing an LED on the Artemis board on and off every few seconds. The physical example of this can be seen in the linked video.
 
-<h2>Example 2 - Serial:</h2>
+##Example 2 - Serial:
 
 <iframe 
     width="560" 
@@ -44,7 +43,7 @@ The first example using the Artemis board involved programming the board with pr
 
 Another important function of the Artemis board is its ability to recieve serial inputs. For this example, the Arduino IDE was used to pass text inputs into the Artemis board. The microcontroller on the board receives these inputs through serial, which can then be read via the serial viewer within the Arduino IDE. The baud rate had to be increased from the default value of 9600 to 115200 in order for the characters to be readable.
 
-<h2>Example 3 - Analog Read:</h2>
+##Example 3 - Analog Read:
 
 <iframe 
     width="560" 
@@ -58,7 +57,7 @@ Another important function of the Artemis board is its ability to recieve serial
 
 The third example involved testing the sensors on the board. This prewritten sample code uses a temperature sensor on the board to send data to the serial terminal, which can be viewed in the Arduino IDE.
 
-<h2>Example 4 - Microphone Output:</h2>
+##Example 4 - Microphone Output:
 
 <iframe 
     width="560" 
