@@ -7,9 +7,9 @@ nav-menu: true
 ---
 <section id="content">
 
-##Objective
+<h2>Objective</h2>
 
-The objective of Lab 1 was to familiarize students with using the Arduino IDE with the Artemis board. The lab involved a number of installations for compatability between the Arduino IDE and Artemis board, as well as exercises to help better understand the functions of the Arduino IDE. Some of these functions include the Artemis board LEDs, serial read and write, and different types of sensors. Since the Artemis board will be used as the microcontroller for future lab projects, it was imperative to learn more about its various functions and features.
+</p>The objective of Lab 1 was to familiarize students with using the Arduino IDE with the Artemis board. The lab involved a number of installations for compatability between the Arduino IDE and Artemis board, as well as exercises to help better understand the functions of the Arduino IDE. Some of these functions include the Artemis board LEDs, serial read and write, and different types of sensors. Since the Artemis board will be used as the microcontroller for future lab projects, it was imperative to learn more about its various functions and features.</p>
 
 <h2>Setup</h2>
     <p>The materials required to complete the lab include:</p>
@@ -17,7 +17,7 @@ The objective of Lab 1 was to familiarize students with using the Arduino IDE wi
         <li>Arduino IDE</li>
             <ul>
                 <li> I downloaded the latest version of the Arduino IDE, verison 2.0.3, from the <a href="https://www.arduino.cc/en/software">official website</a></li>
-            </ul>https://www.sparkfun.com/products/15443
+            </ul>
         <li>SparkFun RedBoard Artemis Nano</li>
             <ul>
                 <li>Details of which can be found <a href="https://www.arduino.cc/en/software">here</a></li>
@@ -37,7 +37,7 @@ The objective of Lab 1 was to familiarize students with using the Arduino IDE wi
     allowfullscreen>
 </iframe>
 
-<p>The first example using the Artemis board involved programming the board with pre-written code through the Arduino IDE. The default Blink program involves flashing an LED on the Artemis board on and off every few seconds. Rhe <b>digitalWrite()</b> function was used to set the LED to high voltage for one second and low voltage for one second. The physical example of this can be seen in the linked video.</p>
+<p>The first example using the Artemis board involved programming the board with pre-written code through the Arduino IDE. The default Blink program involves flashing an LED on the Artemis board on and off every few seconds. The <b>digitalWrite()</b> function was used to set the LED to high voltage for one second and low voltage for one second. The physical example of this can be seen in the linked video.</p>
 
 <h2>Example 2 - Serial:</h2>
 
