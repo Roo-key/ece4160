@@ -1,13 +1,11 @@
 ---
 layout: home
 title: Home
-landing-title: 'ECE 4160 - Fast Robots'
-description: Cornell University, Spring 2023
+landing-title: 'Hi, my name is Forty'
+description: null
 image: null
-author: Larry Lu
+author: null
 show_tile: false
 ---
 
-Hey, I'm Larry and I'm a junior double majoring in ECE and CS enrolled in ECE 4160: Fast Robots for the Spring 2023 semester. I'm taking this class to learn more about the applications of electrical engineering and to gain more hands on robotics experience. This website is a compilation of lab documentation that I've worked on throughout the semester.
-
-![Photo of me](./assets/images/me.jpg)
+Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.
