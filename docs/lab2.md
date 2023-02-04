@@ -44,24 +44,26 @@ The unique uuid4's are used in the <b>connection.yaml</b> file of the Jupyter no
 <p>The first task involved creating a new command type <i>ECHO</i>, which passes a string to the Artemis board's <b>rx_characteristic_string</b>. This string can then be receive back from the Artemims board.
 </p> <br>
 <p>On the Arduino side, the code involves receiving the character array that is passed by the computer, appending it to an Estring value, and writing the new Estring value to the Artemis board's <b>tx_characteristic_string</b>. Some portions of the code are shown below:<br>
-<code>case ECHO:
-            char char_arr[MAX_MSG_SIZE];
-            tx_estring_value.clear();
-            tx_estring_value.append(char_arr);
-            tx_characteristic_string.writeValue(tx_estring_value.c_str());
-            break;
-</code>
+<pre><code> 
+case ECHO:
+    char char_arr[MAX_MSG_SIZE];
+    tx_estring_value.clear();
+    tx_estring_value.append(char_arr);
+    tx_characteristic_string.writeValue(tx_estring_value.c_str());
+    break;
+</code></pre>
 <img src="./assets/images/lab2/task1.png" alt="Task 1">
 </p>
 
 <h2>Task 2: GET_TIME_MILLIS </h2>
 <p>The next task is similar to the first in that we'd like to write a value to the string character. Instead of passing the string value from the computer, the <b>millis()</b> Arduino function was used to get the current time in milliseconds.
 </p> <br>
-<code>#Paraphrased code snippets
-            int time = millis();
-            tx_estring_value.append(time);
-            tx_characteristic_string.writeValue(tx_estring_value.c_str());
-</code>
+<pre><code> 
+#Paraphrased code snippets
+int time = millis();
+tx_estring_value.append(time);
+tx_characteristic_string.writeValue(tx_estring_value.c_str());
+</code></pre>
 <img src="./assets/images/lab2/task2.png" alt="Task 2">
 
 <h2>Task 3: Notification Handler</h2>
@@ -72,31 +74,33 @@ The unique uuid4's are used in the <b>connection.yaml</b> file of the Jupyter no
 <h2>Task 4: GET_TEMP_5s</h2>
 <p>The command GET_TEMP_5s uses the same logic as tasks 1 and 2 to get the internal die temperature of the Artemis board temperature sensor. The library functions <b>getTempDegF()</b> and <b>getTempDegC()</b> correspond to the temperature in fahrenheit and celsius respectively. Temperature data was updated once per second over the course of 5 seconds. The below image shows the results of the command after enabling the notification handler.
 </p> <br>
-<code>    #Paraphrased code snippets
-                for (int i = 0; i < 5; i++){
-                    float temp_f = getTempDegF();
-                    float temp_c = getTempDegC();
-                    tx_estring_value.append(temp_f);
-                    tx_estring_value.append(temp_c);
-                    tx_characteristic_string.writeValue(tx_estring_value.c_str());
-                    delay(1000);
-                }
-</code>
+<pre><code>    
+#Paraphrased code snippets
+for (int i = 0; i < 5; i++){
+    float temp_f = getTempDegF();
+    float temp_c = getTempDegC();
+    tx_estring_value.append(temp_f);
+    tx_estring_value.append(temp_c);
+    tx_characteristic_string.writeValue(tx_estring_value.c_str());
+    delay(1000);
+}
+</code></pre>
 <img src="./assets/images/lab2/task4.png" alt="Task 4">
 
 <h2>Task 5:</h2>
 <p>Task 5 is identical to task 4 but involves updating the temperature more times over the same time frame. To accomplish this, a shorter delay and larger loop were used.
 </p> <br>
-<code>#Paraphrased code snippets
-            for (int i = 0; i < 50; i++){
-                float temp_f = getTempDegF();
-                float temp_c = getTempDegC();
-                tx_estring_value.append(temp_f);
-                tx_estring_value.append(temp_c);
-                tx_characteristic_string.writeValue(tx_estring_value.c_str());
-                delay(100);
-            }
-</code>
+<pre><code>
+#Paraphrased code snippets
+    for (int i = 0; i < 50; i++){
+    float temp_f = getTempDegF();
+    float temp_c = getTempDegC();
+    tx_estring_value.append(temp_f);
+    tx_estring_value.append(temp_c);
+    tx_characteristic_string.writeValue(tx_estring_value.c_str());
+    delay(100);
+    }
+</code></pre>
 <img src="./assets/images/lab2/task5.png" alt="Task 5">
 
 <h2>Task 6:</h2>
