@@ -13,7 +13,7 @@ nav-menu: true
 </p>
 
 <h2>Prelab</h2>
-<p>The <a href = https://cdn.sparkfun.com/assets/e/1/8/4/e/VL53L1X_API.pdf>user manual</a> and <a href = https://cdn.sparkfun.com/assets/8/9/9/a/6/VL53L0X_DS.pdf>datasheet</a> of the VL53L1X were studied prior to the lab. There are a few decisions to decide upon regarding the ToF sensors:
+<p>The <a href="https://cdn.sparkfun.com/assets/e/1/8/4/e/VL53L1X_API.pdf">user manual</a> and <a href="https://cdn.sparkfun.com/assets/8/9/9/a/6/VL53L0X_DS.pdf">datasheet</a> of the VL53L1X were studied prior to the lab. There are a few decisions to decide upon regarding the ToF sensors:
 <ul>
     <li>The final robot will use two ToF sensors, but since the address of the sensor is hardwired on the Artemis board, the two sensors can not be addressed individually without some changes. Possible solutions include changing the address by programming or enabling the sensors seperately by their shutdown pins. I chose to solve the issue by changing the address of the second ToF sensor so that the sensors could be used in parallel without being turned on and off. This method required soldering an extra connection from the shutdown pin of the ToF sensor to the I/O outputs of the Artemis board so that the addresses could be changed during setup. </li>
     <li>The placement of the ToF sensor can change the robots effective field of vision. Since the robot tends to move forward, at least one ToF sensor should be at the front of the robot. However, the second ToF sensor can placed be on the side of the robot, which would allow a large field of vision on one side of the robot but not the other side. You can even put a sensor on the back of the robot, which would improve vision of the robot after it flips 180 degrees. Another possible arrangement is placing both sensors on the front of the robot, one of the left and one on the right. This would allow a wild frontal field of vision as well as more accurate distance readings where the sensors overlap. </li>
@@ -28,8 +28,8 @@ nav-menu: true
 
 <h2>I2C Addressing</h2>
 <p>Next, the SparkFun VL53L1X 4m laser distance sensor library was installed via the Arduino IDE. The Apollo 3 -> Example05_Wire_I2C.ino was used as an example to learn the I2C library. The address of one ToF sensor was found to be 0x29. When both ToF sensors are connected, addresses 0x1, 0x2, 0x3 ... 0x7E were all detected.
-<img src="assets/images/lab3/i2c.PNG" alt="Searching for I2C Device">
 </p>
+<img src="assets/images/lab3/i2c.PNG" alt="Searching for I2C Device">
 
 <h2>Sensor Data</h2>
 <p>The ToF sensor has three functions avaialable:
