@@ -16,7 +16,7 @@ nav-menu: true
 <p>The <a href="https://cdn.sparkfun.com/assets/e/1/8/4/e/VL53L1X_API.pdf">user manual</a> and <a href="https://cdn.sparkfun.com/assets/8/9/9/a/6/VL53L0X_DS.pdf">datasheet</a> of the VL53L1X were studied prior to the lab. There are a few decisions to decide upon regarding the ToF sensors:
 <ul>
     <li>The final robot will use two ToF sensors, but since the address of the sensor is hardwired on the Artemis board, the two sensors can not be addressed individually without some changes. Possible solutions include changing the address by programming or enabling the sensors seperately by their shutdown pins. I chose to solve the issue by changing the address of the second ToF sensor so that the sensors could be used in parallel without being turned on and off. This method required soldering an extra connection from the shutdown pin of the ToF sensor to the I/O outputs of the Artemis board so that the addresses could be changed during setup. </li>
-    <li>The placement of the ToF sensor can change the robots effective field of vision. Since the robot tends to move forward, at least one ToF sensor should be at the front of the robot. However, the second ToF sensor can placed be on the side of the robot, which would allow a large field of vision on one side of the robot but not the other side. You can even put a sensor on the back of the robot, which would improve vision of the robot after it flips 180 degrees. Another possible arrangement is placing both sensors on the front of the robot, one of the left and one on the right. This would allow a wild frontal field of vision as well as more accurate distance readings where the sensors overlap. </li>
+    <li>The placement of the ToF sensors can change the robots effective field of vision by fusing readings from both sensors. Since the robot tends to move forward, at least one ToF sensor should probably be at the front of the robot. However, the second ToF sensor can placed be on the side of the robot, which would allow a large field of vision on one side of the robot but not the other side. Another possible arrangement is placing both sensors on the front of the robot, one of the left and one on the right. This would allow a wild frontal field of vision as well as more accurate distance readings where the sensors overlap. You can even put a sensor on the back of the robot, which would improve vision of the robot after it flips 180 degrees. These various configurations are optimal depending on the task at hand.</li>
     <li>In order to keep the placement of the sensors flexible, long wires were soldered to the ToF sensors so their arrangement could be swapped around when the robot is built. The wires attached to the ToF sensor can be permanently soldered. However, the connection between the ToF sensors and the Artemis board is kept detachable using a breakout board  so that the sensors to be attached and reattached as desired, in case bugfixing or rearrangement is needed. The wires were soldered on the side of the board opposite of the actual sensor because the sensors will face outwards while the wires should be kept inside the robot chassis. </li>
 </ul>
 </p>
@@ -27,7 +27,7 @@ nav-menu: true
 <img src="assets/images/lab3/connections.jpg" alt="Current Connections">
 
 <h2>I2C Addressing</h2>
-<p>Next, the SparkFun VL53L1X 4m laser distance sensor library was installed via the Arduino IDE. The Apollo 3 -> Example05_Wire_I2C.ino was used as an example to learn the I2C library. The address of one ToF sensor was found to be 0x29. When both ToF sensors are connected, addresses 0x1, 0x2, 0x3 ... 0x7E were all detected.
+<p>Next, the SparkFun VL53L1X 4m laser distance sensor library was installed via the Arduino IDE. The Apollo 3 -> Example05_Wire_I2C.ino was used as an example to learn the I2C library. The address of one ToF sensor was found to be 0x29. When both ToF sensors are connected, addresses 0x1, 0x2, 0x3 ... 0x7E were all detected. Later in the lab, the address of the first sensor was set as 0x52 and the second sensor address was changed to 0x20.
 </p>
 <img src="assets/images/lab3/i2c.PNG" alt="Searching for I2C Device">
 
@@ -53,6 +53,17 @@ These functions optimize the ranging performance given the expected distance of 
 <h2>Parallel Sensors</h2>
 <p>Both ToF sensors were connected to the Artemis board simultaneously. The address of the sensor is hardwired on the board, so having multiple sensors is not easily supported. To solve this, an additional wire were soldered from the shutdown pin of one ToF sensor to the output pin GPIO_08 of the Artemis board. A signal is sent from the I/O of the Artemis board to the shutdown pin when the Artemis board is first initialized. While the ToF sensor is shutdown, the second ToF sensor's address is changed in Arduino code. The shutdown signal is set to low, re-enabling the ToF sensor and allowing both sensors to work in parallel with seperate memory addresses.
 </p>
+<pre><code>// Shut down sensor 2
+distanceSensor2.sensorOff();
+// Change address of sensor 1 from default to NEW_ADDRESS
+int sensor1_address = distanceSensor1.getI2CAddress();
+if (sensor1_address == DEF_ADDRESS)
+{
+  distanceSensor1.setI2CAddress(NEW_ADDRESS);
+  Serial.print("Sensor 1 address changed to 0x");
+  Serial.println(distanceSensor1.getI2CAddress(), HEX);
+}
+</code></pre>
 <img src="assets/images/lab3/parallel.PNG" alt="Parallel Sensors">
 
 <h2>Sensor Speed</h2>
@@ -78,6 +89,18 @@ while (!distanceSensor1.checkForDataReady() && !distanceSensor2.checkForDataRead
 </iframe>
 
 <h2>Bluetooth</h2>
-<p>Using methods created in Lab 2, the distance from both sensors was sent to my computer via bluetooth. This data can be compiled into a graphical form for easier data analysis. The below graph shows distance data gathered over approximately 5 seconds from both sensors. The first ToF sensor was kept steady, while the second ToF sensor was slowly moved to face a more distant wall.
+<p>Using methods created in Lab 2, the distance from both sensors was sent to my computer via bluetooth. This data can be compiled into a graphical form for easier data analysis. The below graph shows distance data gathered over approximately 5 seconds from both sensors. The first ToF sensor was kept steady, while the second ToF sensor was slowly moved to face a more distant wall. A Jupyter notebook python method was also created to convert the bluetooth-sent data into a more readable graph, which involved editing the callback function of the bluetooth notify function to process the data being updating in the Artemis board string characteristic.
 </p>
+<pre><code>#Callback function
+def callback(uuid, string_value):
+    global string_characteristic
+    string_characteristic = ble.bytearray_to_string(string_value)
+    str_list = list(map(int, re.findall('\d+', string_characteristic)))
+    time = str_list[0]
+    distance1 = str_list[2]
+    distance2 = str_list[4]
+    time_list.append(time)
+    distance1_list.append(distance1)
+    distance2_list.append(distance2) 
+</code></pre>
 <img src="assets/images/lab3/graph3.PNG" alt="Distance vs Time Graph">
