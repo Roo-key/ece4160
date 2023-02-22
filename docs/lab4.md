@@ -14,7 +14,7 @@ nav-menu: true
 
 <h2>Set up the IMU</h2>
 <img src="assets/images/lab4/connections.jpg" alt="IMU Connected">
-<p> The code <code> #define AD0_VAL 1 </code> defines the pinout of the IMU on the Artemis board. The Artemis board has pins dedicated to I/O, one of which is chosen to be the connection controlling the IMU. Initial testing of the data using sample code shows that the measurements are very noisy, and that the gyroscope data only measures based on motion of the board.
+<p> The code <code> #define AD0_VAL 1 </code> defines the pinout of the IMU on the Artemis board. The Artemis board has pins dedicated to I/O, one of which is chosen to be the connection controlling the IMU. Setting <b>AD0_VAL</b> as 1 pulls the pin high, designating the corresponding pin as an output. Initial testing of the data using sample code shows that the measurements are very noisy, and that the gyroscope data only measures based on motion of the board.
 </p>
 
 <h2>Accelerometer</h2>
