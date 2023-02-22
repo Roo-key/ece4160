@@ -2,14 +2,14 @@
 layout: post
 title: Lab 4
 description: IMU
-image: 
+image: ./assets/images/lab4/IMU.PNG
 nav-menu: true
 ---
 <section id="content">
 
 <h2>Objective</h2>
 
-<p> The goal of this lab was to integrate the Inertial Measurement Unit, or IMU, into the Artemis board, and develop functionality to send positional data to a computer through the IMU accelerometer, gyroscope and magnetometer. The IMU completes the sensor system of the robot, which can be attached to the car to gather distance and location data.
+<p> The goal of this lab was to integrate the Inertial Measurement Unit, or IMU, into the Artemis board, and develop functionality to send positional data to a computer through the IMU accelerometer, gyroscope and magnetometer. The breakout board to be used is the <b>SEN-15335 9DOF IMU sensor</b>, details of which can be found <a href=https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D>here</a>. The IMU completes the sensor system of the robot, which can be attached to the car to gather distance and location data.
 </p>
 
 <h2>Set up the IMU</h2>
@@ -67,5 +67,5 @@ nav-menu: true
 </iframe>
 <p> The above video shows the car in action with the Artemis board and attached sensors on top. Data was gathered from the above stunt that corresponds to the movements of the car itself, shown in the figures below. When the car was spun around, the corresponding IMU measurements show an oscillating yaw measurement. Similarly, the ToF sensors placed on the front and back of the car vary rapidly as the car spins, and have readings of zero every time the car faces a wall too far to properly guage distance.
 </p>
-<img src="assets/images/lab4/stunt1_ToF.PNG" alt="Stunt Distance Measurements">
-<img src="assets/images/lab4/stunt1_IMU.PNG" alt="Stunt Positional Measurements">
+<img src="assets/images/lab4/stunt1_tof.PNG" alt="Stunt Distance Measurements">
+<img src="assets/images/lab4/stunt1_imu.PNG" alt="Stunt Positional Measurements">
