@@ -14,7 +14,7 @@ nav-menu: true
 
 <h2>Set up the IMU</h2>
 <img src="assets/images/lab4/connections.jpg" alt="IMU Connected">
-<p> The code <code> #define AD0_VAL 1 </code> defines the pinout of the IMU on the Artemis board. The Artemis board has pins dedicated to I/O, one of which is chosen to be the connection controlling the IMU. 
+<p> The code <code> #define AD0_VAL 1 </code> defines the pinout of the IMU on the Artemis board. The Artemis board has pins dedicated to I/O, one of which is chosen to be the connection controlling the IMU. Initial testing of the data using sample code shows that the measurements are very noisy, and that the gyroscope data only measures based on motion of the board.
 </p>
 
 <h2>Accelerometer</h2>
@@ -65,7 +65,7 @@ nav-menu: true
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
     allowfullscreen>
 </iframe>
-<p> The above video shows the car in action with the Artemis board and attached sensors on top. Data was gathered from the above stunt that corresponds to the movements of the car itself, shown in the figures below.
+<p> The above video shows the car in action with the Artemis board and attached sensors on top. Data was gathered from the above stunt that corresponds to the movements of the car itself, shown in the figures below. When the car was spun around, the corresponding IMU measurements show an oscillating yaw measurement. Similarly, the ToF sensors placed on the front and back of the car vary rapidly as the car spins, and have readings of zero every time the car faces a wall too far to properly guage distance.
 </p>
-<img src="assets/images/lab4/stunt1ToF.PNG" alt="Stunt Distance Measurements">
-<img src="assets/images/lab4/stunt1IMU.PNG" alt="Stunt Positional Measurements">
+<img src="assets/images/lab4/stunt1_ToF.PNG" alt="Stunt Distance Measurements">
+<img src="assets/images/lab4/stunt1_IMU.PNG" alt="Stunt Positional Measurements">
