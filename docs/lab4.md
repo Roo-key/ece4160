@@ -9,7 +9,7 @@ nav-menu: true
 
 <h2>Objective</h2>
 
-<p> The goal of this lab was to integrate the Inertial Measurement Unit, or IMU, into the Artemis board, and develop functionality to send positional data to a computer through the IMU accelerometer, gyroscope and magnetometer. The breakout board to be used is the <b>SEN-15335 9DOF IMU sensor</b>, details of which can be found <a href=https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D>here</a>. The IMU completes the sensor system of the robot, which can be attached to the car to gather distance and location data.
+<p> The goal of this lab was to integrate the Inertial Measurement Unit, or IMU, into the Artemis board, and develop functionality to send positional data to a computer through the IMU accelerometer, gyroscope and magnetometer. The breakout board to be used is the <b>SEN-15335 9DOF IMU sensor</b>, details of which can be found <a href="https://www.mouser.com/ProductDetail/SparkFun/SEN-15335?qs=uwxL4vQweFMcls1MYZT00A%3D%3D">here</a>. The IMU completes the sensor system of the robot, which can be attached to the car to gather distance and location data.
 </p>
 
 <h2>Set up the IMU</h2>
