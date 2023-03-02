@@ -34,7 +34,7 @@ void loop() {
     analogWrite(motorA1, 100);
     analogWrite(motorA2, 0);
 }
-</pre>
+</code></pre>
 <p>The above code snippet was uploaded to the Artemis board, specifying GPIO11 and GPIO12 as output pins on the Artemis board. The <b>analogWrite()</b> function outputs a PWM signal from the Artemis board to the motor drivers. The output of the motor drivers is pictured below using an oscilloscope.
 </p>
 <img src="assets/images/lab5/oscilloscope.jpg" alt="PWM">
