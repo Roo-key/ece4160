@@ -8,7 +8,7 @@ nav-menu: true
 <section id="content">
 
 <h2>Objective</h2>
-<p> The goal of this lab was to integrate two dual motor drivers (<a href="https://www.pololu.com/product-info-merged/2130">documentation</a>, <a href="https://www.ti.com/lit/ds/symlink/drv8833.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1677689102510&ref_url=https%253A%252F%252Fcei-lab.github.io%252F">datasheet) to control the two motors of the Force1 RC Car. These motor drivers can be controlled directly by the Artemis board output pins to drive the car in an open loop system.
+<p> The goal of this lab was to integrate two dual motor drivers (<a href="https://www.pololu.com/product-info-merged/2130">documentation</a>, <a href="https://www.ti.com/lit/ds/symlink/drv8833.pdf?HQS=dis-dk-null-digikeymode-dsf-pf-null-wwe&ts=1677689102510&ref_url=https%253A%252F%252Fcei-lab.github.io%252F">datasheet)</a> to control the two motors of the Force1 RC Car. These motor drivers can be controlled directly by the Artemis board output pins to drive the car in an open loop system.
 </p>
 
 <h2>Prelab</h2>
