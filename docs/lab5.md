@@ -2,7 +2,7 @@
 layout: post
 title: Lab 5
 description: Motors and Open Loop Control
-image: 
+image: assets/images/lab5/car.jpg
 nav-menu: true
 ---
 <section id="content">
@@ -40,7 +40,7 @@ void loop() {
 <img src="assets/images/lab5/oscilloscope.jpg" alt="PWM">
 
 <h2>Mounting the Artemis Board</h2>
-<p> The Force1 RC Car was disassembled, and the pre-included control board was removed. In its place, the Artemis board was mounted and the motor driver output connections were soldered to the car's motors. Below shows the wheels of one motor driving in the forward and reverse directions. The direction and speed of the wheels can be controled by the PWM signal sent to the motor drivers by changing the parameters of the corresponding <b>analogWrite()</b> value. For this test, it was necessary to increase the current limit of the external power supply due to the large current draw of the motors. After it was verified that the wheels could be spun in both directions, both motor drivers were soldered to both the motor and battery connections.
+<p> The Force1 RC Car was disassembled, and the pre-included control board was removed. In its place, the Artemis board was mounted and the motor driver output connections were soldered to the car's motors. Below shows the wheels of one motor driving in the forward and reverse directions. The direction and speed of the wheels can be controlled by the PWM signal sent to the motor drivers by changing the parameters of the corresponding <b>analogWrite()</b> functions. A larger duty cycle for the PWM signal corrresponds to a faster motor speed, and the direction of the motor can be chosen based on which input of the motor driver the Artemis board PWM signal is being output to. For this test, it was necessary to increase the current limit of the external power supply due to the large current draw of the motors.
 </p>
 
 <iframe 
@@ -63,13 +63,92 @@ void loop() {
     allowfullscreen>
 </iframe>
 
-Short video of both wheels spinning (with battery driving the motor drivers)
+<p>After it was verified that the wheels of one motor could be spun in both directions, the second motor driver was soldered to the second motor. Both drivers were taken off of bench power and connected to the 3.7 V 850 mAh battery instead.</p>
+
+<iframe 
+    width="320" 
+    height="560" 
+    src="https://www.youtube.com/embed/XMpdWCYBUow" 
+    title="ECE 4160 Lab 5: Both Motors Spinning" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+</iframe>
 
 <h2>Driving the Car</h2>
-Picture of all the components secured in the car
+<img src="assets/images/lab5/layout.jpg" alt="Components Mounted onto Car">
 
-Lower limit PWM value discussion
+<p>After mounting the Artemis board and its respective sensors and peripherals, it was time to test the functionality of the car while driven by the Artemis board and motor drivers. Initial testing involved finding the longest duty cycle PWM signal that would allow the car to still move. Because the motors must provide enough torque to overcome friction between the wheels and the ground, as well as the weight of the car itself, the lower limit PWM signal must be greater than 0. This lower limit PWM was determined experimentally to be an <b>analogWrite()</b> value of 30.
+</p>
 
-Calibration demonstration (discussion, video, code, pictures as needed)
+<p>Another test was to ensure both motors are spinning at the same speed. Mechanical differences such as the weight distribution of the car, or differences in the wheels caused the car to drift slightly to the left when both motors drivers receive the same signal. This was rectified experimentally by reducing the speed of the right motor to 0.9 the speed of the left motor. This allows the car to move straight for a significant distance, shown below.</p>
 
-Open loop code and video
+<pre><code> int speed = 100;
+    int speed_A = 0.9 * speed;
+</code></pre>
+
+<iframe 
+    width="320" 
+    height="560" 
+    src="https://www.youtube.com/embed/-PpIq1T9JjA" 
+    title="ECE 4160 Lab 5: Driving Straight" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+</iframe>
+
+<p>The following code and video demonstrates the newly calibrated car driving under open loop control.
+
+<pre><code>// The car will drive in a square
+void loop() {
+    int speed = 100;
+    int speed_A = 0.9 * speed;
+
+    // Drive forward
+    motor_forward(motorA1, motorA2, speed_A);
+    motor_forward(motorB1, motorB2, speed);
+    delay(1000);
+
+    // Turn left
+    motor_forward(motorA1, motorA2, speed_A);
+    motor_reverse(motorB1, motorB2, speed);
+    delay(200);
+
+    // Drive forward
+    motor_forward(motorA1, motorA2, speed_A);
+    motor_forward(motorB1, motorB2, speed);
+    delay(500);
+
+    // Turn left
+    motor_forward(motorA1, motorA2, speed_A);
+    motor_reverse(motorB1, motorB2, speed);
+    delay(200);
+
+    // Drive forward
+    motor_forward(motorA1, motorA2, speed_A);
+    motor_forward(motorB1, motorB2, speed);
+    delay(500);
+
+    // Turn left
+    motor_forward(motorA1, motorA2, speed_A);
+    motor_reverse(motorB1, motorB2, speed);
+    delay(200);
+
+    // Drive forward
+    motor_forward(motorA1, motorA2, speed_A);
+    motor_forward(motorB1, motorB2, speed);
+    delay(500);
+
+    end();
+}
+</code></pre>
+
+<iframe 
+    width="320" 
+    height="560" 
+    src="https://www.youtube.com/embed/ikq7Sx-ZxsM" 
+    title="ECE 4160 Lab 5: Open Loop Control" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    allowfullscreen>
+</iframe>
