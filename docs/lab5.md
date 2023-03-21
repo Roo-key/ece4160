@@ -83,8 +83,8 @@ void loop() {
 
 <p>Another test was to ensure both motors are spinning at the same speed. Mechanical differences such as the weight distribution of the car, or differences in the wheels caused the car to drift slightly to the left when both motors drivers receive the same signal. This was rectified experimentally by reducing the speed of the right motor to 0.9 the speed of the left motor. This allows the car to move straight for a significant distance, shown below.</p>
 
-<pre><code> int speed = 100;
-    int speed_A = 0.9 * speed;
+<pre><code>int speed = 100;
+int speed_A = 0.9 * speed;
 </code></pre>
 
 <iframe 
