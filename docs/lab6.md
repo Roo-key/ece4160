@@ -80,7 +80,7 @@ last_time = millis();
 
 In the above code snippet, the positional term of the controller involves multiplying a gain <i>Kp</i> by the position of the car in relation to the setpoint, stored as the <i>error</i> variable. The <i>integral</i> term uses past values of the error, integrates them over time and multiplies by a <i>Ki</i> gain value. Finally, the <i>derivative</i> term amplifies or dampens the PID controller based on the current rate of change, and is controlled by the <i>Kd></i> term. The first step was to fine tune the values of the PID controller. 
 
-To start, a positional gain factor Kp was determined experimentally. This gain was increased until the car began to oscillate upon reaching the set point, at around Kp = 0.04. Next, Kd was increased until 0.01, which served to stop the oscillation and smoothen the deacceleration of the car as it approached the set point. Including a Ki greater than 0 caused the car to accelerate uncontrollably, so only PD control was implemented for now.
+To start, a positional gain factor Kp was determined experimentally. This gain was increased until the car began to oscillate upon reaching the set point, at around Kp = 0.04, then decreased by a factor of 2 to Kp = 0.02. Next, Kd was increased until 0.01, which served to stop the oscillation and smoothen the deacceleration of the car as it approached the set point. Including a Ki greater than 0 caused the car to accelerate uncontrollably, so only PD control was implemented for now.
 
 <h2>Stunt Demonstration</h2>
 
