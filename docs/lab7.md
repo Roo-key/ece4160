@@ -60,7 +60,7 @@ mu = np.array([[-distance_list[0]],[0]])
 sigma = np.array([[5**2,0],[0,5**2]])
 </code></pre>
 
-<h2>Extrapolation</h2>
+<h2>Python Implementation</h2>
 The Kalman Filter was first built in Python as a sanity check. The results of the filter were compared to the actual distance measurements found during Lab 6 while the car performed its task. As shown below, the Kalman Filter was able to accurately predict the physical measurements with minimal inaccuracy. The filter was not yet implemented in Arduino C code, which will instead be completed in Lab 8 in order to speed up the car as it performs its task without being bottlenecked by the speed of its sensors.
 
 <pre><code># KF estimation
@@ -79,4 +79,30 @@ def kf(mu,sigma,u,y):
     return mu, sigma
 </code></pre>
 
-<img src="assets/images/lab7/kalman.PNG" alt="Kalman Filter Extrapolation">
+<img src="assets/images/lab7/kalman_python.PNG" alt="Kalman Filter Extrapolation">
+
+<h2>Arduino Implementation</h2>
+Using the <i>BasicLinearAlgebra.h</i> library, the Kalman filter was transposed from Jupyter notebook to Arduino code so the Kalman Filter estimation can be calculated directly on the Artemis board itself. The Kalman filter estimation is compared to the measured ToF sensor values in the below graph. It can be observed that the ToF sensor values are taken at a larger time interval compared to the smoother Kalman Filter curve.
+
+<pre><code>void kf(){
+    float u = speed/100;
+    Matrix<2,1> mu_p = Ad * mu + Bd * u;
+    Matrix<2,2> sigma_p = Ad * sigma * ~Ad + sigma_u;
+
+    Matrix<1,1> sigma_m = C * sigma_p * ~C + sigma_z;
+    Matrix<1,1> sigma_m_inverted = sigma_m;
+    Invert(sigma_m_inverted);
+    Matrix<2,1> kkf_gain = sigma_p * ~C * sigma_m_inverted;
+
+    Matrix<1,1> y = {distance1};
+    Matrix<1,1> y_m = y - C*mu_p;
+    mu = mu_p + kkf_gain * y_m;
+    sigma = (I - kkf_gain * C) * sigma_p;
+}
+</code></pre>
+
+<img src="assets/images/lab7/kalman_arduino.PNG" alt="Kalman Filter on Artemis Board">
+
+Finally, the task code was modified to speed up PID control. The speed of the motors were previously updated by a PID loop with an execution time that's limited by the sampling rate of the ToF sensors. The newly modified code uses ToF sensor measurements if they are available, and uses the Kalman Filter estimated distances instead when the sensors are not ready. This allows the robot to update its motor speed at a more rapid time interval.
+
+<iframe width="1263" height="480" src="https://www.youtube.com/embed/QYcYr_x5F3M" title="ECE 4160 Lab 7: Kalman Filter" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
