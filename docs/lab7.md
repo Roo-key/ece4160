@@ -105,4 +105,4 @@ Using the <i>BasicLinearAlgebra.h</i> library, the Kalman filter was transposed 
 
 Finally, the task code was modified to speed up PID control. The speed of the motors were previously updated by a PID loop with an execution time that's limited by the sampling rate of the ToF sensors. The newly modified code uses ToF sensor measurements if they are available, and uses the Kalman Filter estimated distances instead when the sensors are not ready. This allows the robot to update its motor speed at a more rapid time interval.
 
-<iframe width="1263" height="480" src="https://www.youtube.com/embed/QYcYr_x5F3M" title="ECE 4160 Lab 7: Kalman Filter" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="320" height="560" src="https://www.youtube.com/embed/7AqaHDRCOZk" title="ECE 4160 Lab 7: Kalman Filter" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
