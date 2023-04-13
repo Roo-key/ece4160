@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Lab 7
+title: Lab 8
 description: Stunts
-image: 
+image: assets/images/lab8/Title.jpg
 nav-menu: true
 ---
 <section id="content">
@@ -80,7 +80,7 @@ In order to flip the robot, the car must drive in reverse as fast as possible di
 
 </code></pre>
 
-Note that PID control was not utilized since in order to perform the stunt, the robot must be moving at nearly maximum speed, while PID control is used to slow down the robot as it approaches a set point. The Kalman Filter designed in Lab 7 however was important to use; at high speeds the car often overshoots the set point, and since the Kalman Filter predicts position faster than the ToF sensors can measure, basing the control of the car off the estimated distance lets us perform the stunt at a more accurate distance. In spite of this, the set point still had to be increased from 0.5 m to 1 m so the car has ample time to flip without crashing into the wall.
+Note that PID control was not utilized since in order to perform the stunt, the robot must be moving at nearly maximum speed, while PID control is used to slow down the robot as it approaches a set point. The Kalman Filter designed in Lab 7 however was important to use; at high speeds the car often overshoots the set point, and since the Kalman Filter predicts position faster than the ToF sensors can measure, basing the control of the car off the estimated distance lets us perform the stunt at a more accurate distance. In addition, taking account of the time it takes for the car to reverse directions while still caryrying a forwards velociy, the set point had to be increased from 0.5 m to 1 m so that the car has ample time to flip without crashing into the wall.
 
 <h2>Stunts</h2>
 Unfortunately, I was unsuccessful in flipping the robot. Due to imbalances in my left and right motors, the right side of my car accelerates and decelerates much quicker than the left side. As a result, driving the car at maximum speed (PWM value of 255) would result in the right motor overpowering the left motor, and the car spinning in a circle instead of driving forward. The below video shows the car when driving both motors with a PWM signal = 255.
@@ -91,6 +91,9 @@ To rectify the motor imbalance I had to decrease the right motor speed by a fact
 
 <iframe width="320" height="560" src="https://www.youtube.com/embed/LHxgUiBraLI" title="ECE 4160 Lab 8: Attempt 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+In this attempt, if you play the youtube video frame by frame you can see the back wheels lift off the ground prior to the car touching the wall. This implies that the flip is being attempted, but the car is either too slow or too heavy to fully commit to the flip.
+
+<img src="assets/images/lab8/Flip.jpg" alt="Flip?">
 <img src="assets/images/lab8/distance.PNG" alt="Distance Graph">
 <img src="assets/images/lab8/speed.PNG" alt="Speed Graph">
 
