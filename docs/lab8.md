@@ -85,13 +85,13 @@ Note that PID control was not utilized since in order to perform the stunt, the 
 <h2>Stunts</h2>
 Unfortunately, I was unsuccessful in flipping the robot. Due to imbalances in my left and right motors, the right side of my car accelerates and decelerates much quicker than the left side. As a result, driving the car at maximum speed (PWM value of 255) would result in the right motor overpowering the left motor, and the car spinning in a circle instead of driving forward. The below video shows the car when driving both motors with a PWM signal = 255.
 
-<iframe width="320" height="560" src="https://www.youtube.com/embed/cdrUaW3QyGE" title="ECE 4160 Lab 8: Driving Forward?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<br><iframe width="320" height="560" src="https://www.youtube.com/embed/cdrUaW3QyGE" title="ECE 4160 Lab 8: Driving Forward?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-To rectify the motor imbalance I had to decrease the right motor speed by a factor of 0.5. This slowed down the car enough so that it could not gain sufficient momentum in time to overcome gravity, and although I have some recordings of the back half of the car lifting off of the ground, I was never able to fully flip the robot.
+<br>To rectify the motor imbalance I had to decrease the right motor speed by a factor of 0.5. This slowed down the car enough so that it could not gain sufficient momentum in time to overcome gravity, and although I have some recordings of the back half of the car lifting off of the ground, I was never able to fully flip the robot.
 
-<iframe width="320" height="560" src="https://www.youtube.com/embed/LHxgUiBraLI" title="ECE 4160 Lab 8: Attempt 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<br><iframe width="320" height="560" src="https://www.youtube.com/embed/LHxgUiBraLI" title="ECE 4160 Lab 8: Attempt 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-In this attempt, if you play the youtube video frame by frame you can see the back wheels lift off the ground prior to the car touching the wall. This implies that the flip is being attempted, but the car is either too slow or too heavy to fully commit to the flip.
+<br>In this attempt, if you play the youtube video frame by frame you can see the back wheels lift off the ground prior to the car touching the wall. This implies that the flip is being attempted, but the car is either too slow or too heavy to fully commit to the flip.
 
 <img src="assets/images/lab8/Flip.jpg" alt="Flip?">
 <img src="assets/images/lab8/distance.PNG" alt="Distance Graph">
