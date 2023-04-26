@@ -53,7 +53,7 @@ Once I verified that I could rotate the car at a nearly constant speed, it was t
 
 <br>I also wanted to ensure that the robot's readings were consistent across multiple trials, especially since the robot's rotational speed is not perfectly constant. To do so I plotted the results of two trials, and found that they were roughly equivalent.
 
-<br><img src="assets/images/lab9/Polar2.PNG" alt="Repeatability Graph", width="50%" height="50%">
+<br><img src="assets/images/lab9/Polar2.PNG" alt="Repeatability Graph" width="50%" height="50%">
 
 <h2>Merge and Plot Readings</h2>
 After collecting distance data from different points in the lab, the next step is to merge these readings into a map. I converted the readings of the robot from the original frame of reference based on the ToF sensor position to the inertial reference frame of the room. Since the ToF sensor is mounted on the front of my robot with an offset of approximately 50 mm, I included this offset when converting the polar distance readings to cartesian coordinates. I also had to convert the ToF measurements from millimeters to feet.
@@ -74,7 +74,7 @@ def plot(distances,theta,x_origin,y_origin,color,label):
 
 <br><img src="assets/images/lab9/Map1.PNG" alt="First Merged Map" width="50%" height="50%">
 
-In the above image, I used theta values that were measured and calculated directly by integrating the yaw values sent from the IMU gyroscope. I was worried that this value would not be accurate due to noise in the sensor readings, so I also tried to calculate theta directly using time measurements and assuming the car was rotating at a constant angular velocity.
+<br>In the above image, I used theta values that were measured and calculated directly by integrating the yaw values sent from the IMU gyroscope. I was worried that this value would not be accurate due to noise in the sensor readings, so I also tried to calculate theta directly using time measurements and assuming the car was rotating at a constant angular velocity.
 
 <pre><code>ratio = (2*np.pi)/time[-1]
 angle =(time[i]*ratio)
