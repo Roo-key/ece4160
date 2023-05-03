@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 6
+title: Lab 06
 description: Close Loop Control (PID)
 image: assets/images/lab6/PID.PNG
 nav-menu: true

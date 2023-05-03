@@ -87,7 +87,7 @@ Next, we want to find the probability that the robot has reached some current po
 
 Finally, we have all values necessary to perform the prediction step of the Bayes Filter. To do so, we must loop through all 12 x 9 x 18 = 1944 current and possible hexes. To speed up our filter, we ignore all grid hexes that the robot is unlickly to be at, with a threshold of P(robot's previous location is at (x,y,a)) >= 0.0001.
 
-<pre></code>def prediction_step(cur_odom, prev_odom):
+<pre><code>def prediction_step(cur_odom, prev_odom):
     """ Prediction step of the Bayes Filter.
     Update the probabilities in loc.bel_bar based on loc.bel from the previous time step and the odometry motion model.
 
@@ -169,4 +169,4 @@ The results of the Bayes Filter were tested on the provided simulator. In the si
 <img src="assets/images/lab10/Sim2.PNG" alt="Bayes Filter" width="50%" height="50%">
 <img src="assets/images/lab10/Sim3.PNG" alt="Bayes Filter" width="50%" height="50%">
 
-<iframe width="1263" height="480" src="https://www.youtube.com/embed/8cMPS5iOm44" title="ECE 4160 Lab 10: Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="960" height="480" src="https://www.youtube.com/embed/8cMPS5iOm44" title="ECE 4160 Lab 10: Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

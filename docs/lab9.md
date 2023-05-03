@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 9
+title: Lab 09
 description: Mapping
 image: assets/images/lab9/Drawn_map.PNG
 nav-menu: true

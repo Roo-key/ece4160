@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 5
+title: Lab 05
 description: Motors and Open Loop Control
 image: assets/images/lab5/car.jpg
 nav-menu: true

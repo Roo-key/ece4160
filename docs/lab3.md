@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 3
+title: Lab 03
 description: Time of Flight Sensor
 image: ./assets/images/lab3/ToF.jpg
 nav-menu: true

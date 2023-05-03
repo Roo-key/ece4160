@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 8
+title: Lab 08
 description: Stunts
 image: assets/images/lab8/Title.jpg
 nav-menu: true

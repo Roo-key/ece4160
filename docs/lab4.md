@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 4
+title: Lab 04
 description: IMU
 image: ./assets/images/lab4/IMU.PNG
 nav-menu: true

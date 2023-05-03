@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 2
+title: Lab 02
 description: Bluetooth
 image: ./assets/images/lab2/bluetooth.png
 nav-menu: true

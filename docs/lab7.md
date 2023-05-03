@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 7
+title: Lab 07
 description: Kalman Filter
 image: assets/images/lab7/kalman_filter.PNG
 nav-menu: true

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lab 1
+title: Lab 01
 description: Artemis
 image: assets/images/lab1.jpg
 nav-menu: true
