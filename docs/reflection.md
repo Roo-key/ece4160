@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Lab 10
-description: Localization (Sim)
-image: assets/images/lab10/Sim3.PNG
+title: Relection
+description:
+image: 
 nav-menu: true
 ---
 <section id="content">

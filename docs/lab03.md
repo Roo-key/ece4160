@@ -2,7 +2,7 @@
 layout: post
 title: Lab 03
 description: Time of Flight Sensor
-image: ./assets/images/lab3/ToF.jpg
+image: ./assets/images/lab3/vl53l1x.jpg
 nav-menu: true
 ---
 <section id="content">

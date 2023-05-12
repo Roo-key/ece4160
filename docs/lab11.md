@@ -2,7 +2,7 @@
 layout: post
 title: Lab 11
 description: Localization (Real)
-image: 
+image: assets/images/lab11/localization.jpg
 nav-menu: true
 ---
 <section id="content">
