@@ -118,8 +118,8 @@ My python code for the <i>perform_observation_loop()</i> function is shown below
 <br><img src="assets/images/lab11/5, 3.PNG" alt="Localization at (5, 3)" width="50%" height="50%">
 <br><img src="assets/images/lab11/5, 3 update.PNG" alt="Update Step at (5, 3)" width="50%" height="50%">
 
-<h3>(5, -2)<h3>
-<br><img src="assets/images/lab11/5, -2.PNG" alt="Localization at (5, -2)" width="50%" height="50%">
-<br><img src="assets/images/lab11/5, -2 update.PNG" alt="Update Step at (5, -2)" width="50%" height="50%">
+<h3>(5, -3)<h3>
+<br><img src="assets/images/lab11/5, -3.PNG" alt="Localization at (5, -3)" width="50%" height="50%">
+<br><img src="assets/images/lab11/5, -3 update.PNG" alt="Update Step at (5, -3)" width="50%" height="50%">
 
-<p>The robot has a very high confidenc in its update position; from the images above we can observe that the probability the robot is in its current location is nearly 1 for all four locations. The predicted locations from the update step match the actual ground truth of the robot fairly well. However, although the robot accurately localizes its X and Y coordinates, the robot seems to think it is at a -10/-30 degree offset in all four update steps. From talking to the TAs it seems like this issue occurs in the <i>localization.py</i> module in the way that the grid is discretized. The angle space is discretized into 20 degree increments, but the robot is always at the center of these increments; instead of being at 0 degrees, the robot is either at -10 or 10 degrees. I plan to correct this issue in future labs.</p>
+<p>The robot has a very high confidence in its update position, and from the images above we can observe that the probability that the robot is at its belief is nearly 1 for all four locations. The predicted locations from the update step also matches well with the actual ground truth of the robot. All of the localization results were accurate except for the (5, 3) location which is off by one grid square vertically. However, although the robot accurately localizes its X and Y coordinates, the robot seems to think it is at a -10/-30 degree offset in all four update steps. From talking to the TAs it seems like this issue occurs in the <i>localization.py</i> module in the way that the grid is discretized. The angle space is discretized into 20 degree increments, but the robot is always at the center of these increments; instead of being at 0 degrees, the robot is either at -10 or 10 degrees. I plan to correct this issue in future labs.</p>
