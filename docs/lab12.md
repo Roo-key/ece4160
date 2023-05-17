@@ -8,13 +8,13 @@ nav-menu: true
 <section id="content">
 
 <h2>Objective</h2>
-The culmination of many, many hours of labor, the final lab 12 involves navigating our robot through a maze. The goal of the lab is to reach every single waypoint in a set of nine waypoints via any means necessary.
+<p>The culmination of many, many hours of labor, the final lab 12 involves navigating our robot through a maze. The goal of the lab is to reach every single waypoint in a set of nine waypoints via any means necessary.</p>
 
 <br><img src="assets/images/lab12/Maze.png" alt="Path through maze" width="50%" height="50%">
 <br><img src="assets/images/lab12/Maze_irl.jpg" alt="Maze" width="50%" height="50%">
 
 <h2>Initial Design: Onboard</h2>
-The car must perform three different actions as it navigates the maze. First and foremost, the car must drive forward and for the purposes of this lab I designed an arduino function to stop the car after reaching a set distance. To do so, I first derived a setpoint by subtracting the desired travel distance from the current frontal ToF sensor reading. When the new ToF sensor reading is exactly (x) less than the initial ToF sensor reading, that means that the car has moved (x) distance forward. After finding the setpoint, the car behaves as in lab 7, using a PID controller to reach the set point and a Kalman Filter to bypass the slow sensor readings. Below shows the pseudocode of my command.
+<p>The car must perform three different actions as it navigates the maze. First and foremost, the car must drive forward and for the purposes of this lab I designed an arduino function to stop the car after reaching a set distance. To do so, I first derived a setpoint by subtracting the desired travel distance from the current frontal ToF sensor reading. When the new ToF sensor reading is exactly (x) less than the initial ToF sensor reading, that means that the car has moved (x) distance forward. After finding the setpoint, the car behaves as in lab 7, using a PID controller to reach the set point and a Kalman Filter to bypass the slow sensor readings. Below shows the pseudocode of my command.</p>
 
 <pre><code>// Drives the robot forward a set distance
 case FORWARD_PID:
@@ -40,7 +40,7 @@ case FORWARD_PID:
     }
 </code></pre>
 
-Secondly, the car must be able to turn. Similarly to the driving forward command, I built my function to turn the car a specific theta value based off of code from lab 9. This function uses PID control to turn the car at a constant angular velocity. The car keeps track of its angular position by integrating over the angular velocity found from the gyroscope, and stops once the theta has been reached. I also use an if statement so that a postive theta input will spin the car to the right, and a negative theta input will cause the car to turn to the right.
+<p>Secondly, the car must be able to turn. Similarly to the driving forward command, I built my function to turn the car a specific theta value based off of code from lab 9. This function uses PID control to turn the car at a constant angular velocity. The car keeps track of its angular position by integrating over the angular velocity found from the gyroscope, and stops once the theta has been reached. I also use an if statement so that a postive theta input will spin the car to the right, and a negative theta input will cause the car to turn to the right.</p>
 
 <pre><code>// Turns the robot a set theta
 case TURN:
@@ -65,7 +65,7 @@ case TURN:
     }
 </code></pre>
 
-The final functionality of the car is a localization function. This function is identical to the localization command I created in lab 11, where the car will spin as slowly as possible in a 360 degree circle. As it spins, the car will sent over bluetooth a number of distance measurements that are evenly spaced by theta value.
+<p>The final functionality of the car is a localization function. This function is identical to the localization command I created in lab 11, where the car will spin as slowly as possible in a 360 degree circle. As it spins, the car will sent over bluetooth a number of distance measurements that are evenly spaced by theta value.</p>
 
 <pre><code>//Performs observation loop, equally spaced between one 360 degree rotation
 case LOCALIZE:
@@ -85,9 +85,9 @@ case LOCALIZE:
 </code></pre>
 
 <h2>Initial Design: Offboard</h2>
-Offboard, I used a jupyter notebook to send commands to the robot and interpret received data. Similar to in lab 11, I built a robot class that can command the robot over bluetooth to perform the localization function. I also created python functions to command the robot to drive forward and turn, as well as callback functions to interpret sensor data received over bluetooth.
+<p>Offboard, I used a jupyter notebook to send commands to the robot and interpret received data. Similar to in lab 11, I built a robot class that can command the robot over bluetooth to perform the localization function. I also created python functions to command the robot to drive forward and turn, as well as callback functions to interpret sensor data received over bluetooth.</p>
 
-</pre><code>#Definition of robot class
+<pre><code>#Definition of robot class
 class RealRobot():
         
     #A class to interact with the real robot, based off code from lab 11
@@ -148,9 +148,9 @@ class RealRobot():
         return
 </code></pre>
 
-For the actual control of the robot, I used a mixed open/closed control loop to drive the robot through the maze. I stored the waypoints into an array, and used functions created in lab 10 to output the necessary trajectories required to travel between two waypoints. By inputting two waypoints into the <i>compute_control()</i> function, I can find the rotation and translation required to reach point B from point A. I then use these rotation and translation values with the previously described arduino commands to move the robot to point B from point A. 
+<p>For the actual control of the robot, I used a mixed open/closed control loop to drive the robot through the maze. I stored the waypoints into an array, and used functions created in lab 10 to output the necessary trajectories required to travel between two waypoints. By inputting two waypoints into the <i>compute_control()</i> function, I can find the rotation and translation required to reach point B from point A. I then use these rotation and translation values with the previously described arduino commands to move the robot to point B from point A. </p>
 
-<br>After moving, I command the robot to perform the update step of the Bayes' filter to find its current location within the maze. The current location is then used as point A as the robot attempts to travel to the next waypoint, or point B. Since my Bayes' filter update step from lab 11 does not accurately record current angle, I chose to record the angle manually after every rotation. This hack relies on the assumption that the robot actually rotates the amount I tell it to rotate, but I found this assumption to be fairly accurate.
+<p>After moving, I command the robot to perform the update step of the Bayes' filter to find its current location within the maze. The current location is then used as point A as the robot attempts to travel to the next waypoint, or point B. Since my Bayes' filter update step from lab 11 does not accurately record current angle, I chose to record the angle manually after every rotation. This hack relies on the assumption that the robot actually rotates the amount I tell it to rotate, but I found this assumption to be fairly accurate.</p>
 
 <pre><code>#Function definitions
 def feet_to_mm(feet):
@@ -204,12 +204,13 @@ for i in range(len(waypoints) - 1):
 <h2>Challenges</h2>
 
 <h4>ToF Sensor Struggles<h4>
-One of the first issues I discovered involved the robot's driving forward function. More specifically, I found that the robot's PID control loop would over accelerate the robot causing an overshoot of the waypoint. Upon inspecting the distance sensor outputs, I found that the ToF sensors would behave very noisily at large distances, creating an increase in the positional error and causing the car to mistakenly accelerate. One possible explanation is that the slight tilt of the robot combined with the long distances causes the time of flight of the ToF sensor to increase. Alternatively, the entirety of the maze may simply be outside of the sensors operable range, especially when considering diagonal measurements across the maze. 
+
+<p>One of the first issues I discovered involved the robot's driving forward function. More specifically, I found that the robot's PID control loop would over accelerate the robot causing an overshoot of the waypoint. Upon inspecting the distance sensor outputs, I found that the ToF sensors would behave very noisily at large distances, creating an increase in the positional error and causing the car to mistakenly accelerate. One possible explanation is that the slight tilt of the robot combined with the long distances causes the time of flight of the ToF sensor to increase. Alternatively, the entirety of the maze may simply be outside of the sensors operable range, especially when considering diagonal measurements across the maze.</p>
 
 <br><img src="assets/images/lab12/tof1.PNG" alt="ToF Noise Graph 1" width="50%" height="50%">
 <img src="assets/images/lab12/tof2.PNG" alt="ToF Noise Graph 2" width="50%" height="50%">
 
-<br>This was a major issue for the first waypoint transition, (-4, -3) -> (-2, -1), because the robot starts at the bottom left corner and faces the top right corner, resulting in a hypotenuse that is greater than four meters, or the maximum range of the ToF sensors. To fix this issue, I created a new arduino function that drives the car forward for a set period of time. I then experimentally determined how long the car needed to drive forward to travel from the first to the second waypoint.
+<p>This was a major issue for the first waypoint transition, (-4, -3) -> (-2, -1), because the robot starts at the bottom left corner and faces the top right corner, resulting in a hypotenuse that is greater than four meters, or the maximum range of the ToF sensors. To fix this issue, I created a new arduino function that drives the car forward for a set period of time. I then experimentally determined how long the car needed to drive forward to travel from the first to the second waypoint.</p>
 
 <pre><code>#For the first waypoint transition, I tell the robot to drive based on time rather than distance
 await robot.turn(45)
@@ -218,9 +219,9 @@ await robot.turn(-45)
 </code></pre>
 
 <h4>Localization<h4>
-Originally, I had planned to have the robot localize after reaching every waypoint so that the robot could correct itself upon missing a target. Without localization, small mechanical errors in the robots movement build up over time because the robot is performing under the assumption that it reaches every target perfectly. There were two issues with my plan; firstly, my robot does not spin in a perfect circle upon performing the observation loop. Instead, the robot spins about with a slight radius that varies from attempt to attempt and offsets the robot slightly with every localization attempt. Ideally, this issue would be negligible because the robot can find its location and adapt accordingly despite the slight movement. However, I also found that although my Bayes' filter update step is accurate at the waypoints, the accuracy plummets when the robot is near a wall. Thus including localization in my control loop actually reduced my robots' ability to navigate through the maze.
+<p>Originally, I had planned to have the robot localize after reaching every waypoint so that the robot could correct itself upon missing a target. Without localization, small mechanical errors in the robots movement build up over time because the robot is performing under the assumption that it reaches every target perfectly. There were two issues with my plan; firstly, my robot does not spin in a perfect circle upon performing the observation loop. Instead, the robot spins about with a slight radius that varies from attempt to attempt and offsets the robot slightly with every localization attempt. Ideally, this issue would be negligible because the robot can find its location and adapt accordingly despite the slight movement. However, I also found that although my Bayes' filter update step is accurate at the waypoints, the accuracy plummets when the robot is near a wall. Thus including localization in my control loop actually reduced my robots' ability to navigate through the maze.</p>
 
-<br>Below shows a run using localization after reaching every waypoint. From the video you can see how the robot's observation loop causes it to shift slightly because it does not spin in a perfect circle. I also included a plot of the simulator representing the robot's belief in its current location, as well as the python log outputs. The robot does attempt to localize and correct its path, but unfortunately it is too unreliable to perform precise movements through the maze.
+<p>Below shows a run using localization after reaching every waypoint. From the video you can see how the robot's observation loop causes it to shift slightly because it does not spin in a perfect circle. I also included a plot of the simulator representing the robot's belief in its current location, as well as the python log outputs. The robot does attempt to localize and correct its path, but unfortunately it is too unreliable to perform precise movements through the maze.</p>
 
 <iframe width="1263" height="480" src="https://www.youtube.com/embed/eDvHMEbneFg" title="ECE 4160 Lab 12: Localization Attempt" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -230,7 +231,7 @@ Originally, I had planned to have the robot localize after reaching every waypoi
 
 <h2>Results</h2>
 
-Here are some semi-successful attempts:
+<p>Here are some semi-successful attempts:</p>
 
 <iframe width="1263" height="480" src="https://www.youtube.com/embed/qEsaqd4YX5c" title="ECE 4160 Lab: Trial 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -238,14 +239,14 @@ Here are some semi-successful attempts:
 
 <iframe width="1263" height="480" src="https://www.youtube.com/embed/Bsdc-MMP5jM" title="ECE 4160 Lab 12: Trial 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-A common theme among these first three trials is that the robot misses the second to last waypoint. The transition from the 7th to 8th waypoints, or (5, 3) -> (0, 3), is one of the largest distances the robot has to travel. At this distance and speed, the differences between the left and right wheels causes the robot to tilt slightly to the left, and the robot ends up failing to hit the (0, 3) waypoint. I attempted to fix this by applying a reduction to the speed of the right wheels, but ran into issues because the robot moves at a variety of different speeds throughout the maze. I could have had a dynamically changing factor reduction of the right wheels, but I wanted to avoid such a hacky adjustment.
+<p>A common theme among these first three trials is that the robot misses the second to last waypoint. The transition from the 7th to 8th waypoints, or (5, 3) -> (0, 3), is one of the largest distances the robot has to travel. At this distance and speed, the differences between the left and right wheels causes the robot to tilt slightly to the left, and the robot ends up failing to hit the (0, 3) waypoint. I attempted to fix this by applying a reduction to the speed of the right wheels, but ran into issues because the robot moves at a variety of different speeds throughout the maze. I could have had a dynamically changing factor reduction of the right wheels, but I wanted to avoid such a hacky adjustment.</p>
 
-<br>For the next trial the robot had some interesting behavior at the very end:
+<p>For the next trial the robot had some interesting behavior at the very end:</p>
 
 <iframe width="1263" height="480" src="https://www.youtube.com/embed/OES5VJarEho" title="ECE 4160 Lab 12: Trial 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-Here was my best attempt, where bumping in the wall actually helped my robot get back on course:
+<p>Here was my best attempt, where bumping in the wall actually helped my robot get back on course:</p>
 
 <iframe width="1263" height="480" src="https://www.youtube.com/embed/GOpEUAk4-Ik" title="ECE 4160 Lab 12: Trial 5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-Overall I'm fairly satisfied with how my robot was able to navigate through the maze. I do wish I had more time to refine the localization and implement the full Bayes filter into my control loop, but due to time constraints I settled for a much simpler control scheme. I found this lab quite challenging and time-consuming, but ultimately enjoyed my time tackling the task as I consolidated all the work I've put into previous labs throughout this semester. Thanks to all the course staff for making this class such a great experience!
+<p>Overall I'm fairly satisfied with how my robot was able to navigate through the maze. I do wish I had more time to refine the localization and implement the full Bayes filter into my control loop, but due to time constraints I settled for a much simpler control scheme. I found this lab quite challenging and time-consuming, but ultimately enjoyed my time tackling the task as I consolidated all the work I've put into previous labs throughout this semester. Thanks to all the course staff for making this class such a great experience!</p>
