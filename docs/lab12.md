@@ -2,7 +2,7 @@
 layout: post
 title: Lab 12
 description: Path Planning and Execution
-image:
+image: assets/images/lab12/Maze.PNG
 nav-menu: true
 ---
 <section id="content">
@@ -10,7 +10,7 @@ nav-menu: true
 <h2>Objective</h2>
 The culmination of many, many hours of labor, the final lab 12 involves navigating our robot through a maze. The goal of the lab is to reach every single waypoint in a set of nine waypoints via any means necessary.
 
-<br><img src="assets/images/lab12/Maze.PNG" alt="Path through maze" width="50%" height="50%">
+<br><img src="assets/images/lab12/Maze.png" alt="Path through maze" width="50%" height="50%">
 <br><img src="assets/images/lab12/Maze_irl.jpg" alt="Maze" width="50%" height="50%">
 
 <h2>Initial Design: Onboard</h2>
@@ -42,7 +42,7 @@ case FORWARD_PID:
 
 Secondly, the car must be able to turn. Similarly to the driving forward command, I built my function to turn the car a specific theta value based off of code from lab 9. This function uses PID control to turn the car at a constant angular velocity. The car keeps track of its angular position by integrating over the angular velocity found from the gyroscope, and stops once the theta has been reached. I also use an if statement so that a postive theta input will spin the car to the right, and a negative theta input will cause the car to turn to the right.
 
-<code><pre>// Turns the robot a set theta
+<pre><code>// Turns the robot a set theta
 case TURN:
     {
         // Receive desired theta value over bluetooth
@@ -209,7 +209,7 @@ One of the first issues I discovered involved the robot's driving forward functi
 <br><img src="assets/images/lab12/tof1.PNG" alt="ToF Noise Graph 1" width="50%" height="50%">
 <img src="assets/images/lab12/tof2.PNG" alt="ToF Noise Graph 2" width="50%" height="50%">
 
-This was a major issue for the first waypoint transition, (-4, -3) -> (-2, -1), because the robot starts at the bottom left corner and faces the top right corner, resulting in a hypotenuse that is greater than four meters, or the maximum range of the ToF sensors. To fix this issue, I created a new arduino function that drives the car forward for a set period of time. I then experimentally determined how long the car needed to drive forward to travel from the first to the second waypoint.
+<br>This was a major issue for the first waypoint transition, (-4, -3) -> (-2, -1), because the robot starts at the bottom left corner and faces the top right corner, resulting in a hypotenuse that is greater than four meters, or the maximum range of the ToF sensors. To fix this issue, I created a new arduino function that drives the car forward for a set period of time. I then experimentally determined how long the car needed to drive forward to travel from the first to the second waypoint.
 
 <pre><code>#For the first waypoint transition, I tell the robot to drive based on time rather than distance
 await robot.turn(45)
@@ -226,7 +226,7 @@ Originally, I had planned to have the robot localize after reaching every waypoi
 
 <br><img src="assets/images/lab12/localization.PNG" alt="Belief of the robot" width="50%" height="50%">
 <br><img src="assets/images/lab12/localization_log1.PNG" alt="Bayes filter log" width="50%" height="50%">
-<br><img src="assets/images/lab12/localizatoin_log2.PNG" alt="Bayes filter log" width="50%" height="50%">
+<br><img src="assets/images/lab12/localization_log2.PNG" alt="Bayes filter log" width="50%" height="50%">
 
 <h2>Results</h2>
 
