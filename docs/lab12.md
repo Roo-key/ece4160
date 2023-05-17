@@ -203,7 +203,7 @@ for i in range(len(waypoints) - 1):
 
 <h2>Challenges</h2>
 
-<h4>ToF Sensor Struggles<h4>
+<h4>ToF Sensor Struggles</h4>
 
 <p>One of the first issues I discovered involved the robot's driving forward function. More specifically, I found that the robot's PID control loop would over accelerate the robot causing an overshoot of the waypoint. Upon inspecting the distance sensor outputs, I found that the ToF sensors would behave very noisily at large distances, creating an increase in the positional error and causing the car to mistakenly accelerate. One possible explanation is that the slight tilt of the robot combined with the long distances causes the time of flight of the ToF sensor to increase. Alternatively, the entirety of the maze may simply be outside of the sensors operable range, especially when considering diagonal measurements across the maze.</p>
 
@@ -218,7 +218,7 @@ await robot.forward_timed(1.8)
 await robot.turn(-45)
 </code></pre>
 
-<h4>Localization<h4>
+<h4>Localization</h4>
 <p>Originally, I had planned to have the robot localize after reaching every waypoint so that the robot could correct itself upon missing a target. Without localization, small mechanical errors in the robots movement build up over time because the robot is performing under the assumption that it reaches every target perfectly. There were two issues with my plan; firstly, my robot does not spin in a perfect circle upon performing the observation loop. Instead, the robot spins about with a slight radius that varies from attempt to attempt and offsets the robot slightly with every localization attempt. Ideally, this issue would be negligible because the robot can find its location and adapt accordingly despite the slight movement. However, I also found that although my Bayes' filter update step is accurate at the waypoints, the accuracy plummets when the robot is near a wall. Thus including localization in my control loop actually reduced my robots' ability to navigate through the maze.</p>
 
 <p>Below shows a run using localization after reaching every waypoint. From the video you can see how the robot's observation loop causes it to shift slightly because it does not spin in a perfect circle. I also included a plot of the simulator representing the robot's belief in its current location, as well as the python log outputs. The robot does attempt to localize and correct its path, but unfortunately it is too unreliable to perform precise movements through the maze.</p>
